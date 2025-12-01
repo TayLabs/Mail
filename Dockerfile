@@ -5,12 +5,12 @@ RUN npm install
 COPY . .
 
 # Development stage
-FROM builder as development
+FROM builder AS development
 ENV NODE_ENV=development
 EXPOSE 7313
 CMD ["npm", "run", "dev"]
 
 # Production stage
-FROM builder as production
+FROM builder AS production
 ENV NODE_ENV=production
 CMD ["npm", "start"]
