@@ -2,15 +2,12 @@ FROM node:24-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY . .
-
-# Development stage
-FROM builder AS development
-ENV NODE_ENV=development
-EXPOSE 7313
-CMD ["npm", "run", "dev"]
+COPY . ./
+RUN npm run build
 
 # Production stage
 FROM builder AS production
+WORKDIR /app/prod
+COPY --from=builder /app/dist ./
 ENV NODE_ENV=production
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
