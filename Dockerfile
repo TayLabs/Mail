@@ -7,7 +7,5 @@ RUN npm run build
 
 # Production stage
 FROM builder AS production
-WORKDIR /app/prod
-COPY --from=builder /app/dist ./
 ENV NODE_ENV=production
 CMD ["node", "server.js"]
