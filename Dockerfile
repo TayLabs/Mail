@@ -8,4 +8,4 @@ RUN npm run build
 # Production stage
 FROM builder AS production
 ENV NODE_ENV=production
-CMD ["node", "server.js"]
+CMD ["node", "dist/server.js"]
