@@ -1,0 +1,32 @@
+{
+	"name": "taylabs-mail",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/server.ts",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development tsx src/server.ts",
+		"watch": "cross-env NODE_ENV=development tsx --watch src/server.ts",
+		"build": "tsc",
+		"start": "node dist/server.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.23.0",
+	"dependencies": {
+		"body-parser": "^2.2.1",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.3",
+		"express": "^5.1.0",
+		"helmet": "^8.1.0",
+		"winston": "^3.18.3",
+		"zod": "^4.1.13"
+	},
+	"devDependencies": {
+		"@types/body-parser": "^1.19.6",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.5",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
+	}
+}
