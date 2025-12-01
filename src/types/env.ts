@@ -22,6 +22,10 @@ const envSchema = z.object({
     .regex(/^\d+$/, 'Not a valid number')
     .default('7212')
     .transform(Number),
+  API_KEY: z.string(
+    'Must include an api key for authenticating external service calls (Will be replaced in v2 with dedicated key management service)'
+  ),
+  MAILTRAP_API_KEY: z.string('Must include api key for mailtrap'),
   // DATABASE_URL: z.url('Must be a valid url for the database'),
 });
 type EnvVariables = z.infer<typeof envSchema>;
