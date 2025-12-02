@@ -14,6 +14,7 @@ const sendBodySchema = z.object({
 type SendReqBody = z.infer<typeof sendBodySchema>;
 type SendResBody = ResponseBody<{
 	message: string;
+	mailId: string[];
 }>;
 
 export { sendBodySchema as default, type SendReqBody, type SendResBody };
