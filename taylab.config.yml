@@ -1,0 +1,7 @@
+service: mail
+
+permissions:
+  - key: 'mail.send'
+    description: 'Send an email via the SMTP service'
+    scopes:
+      - 'api-key'

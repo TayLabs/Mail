@@ -3,52 +3,52 @@ import dotenv from 'dotenv';
 
 // Only load .env files with 'dotenv' if in development mode
 if (process.env.NODE_ENV === 'development') {
-  dotenv.config({ path: '.env', quiet: true });
-  dotenv.config({
-    path: '.env.local',
-    override: true,
-    quiet: true, // Disable logs/tips
-  });
+	dotenv.config({ path: '.env', quiet: true });
+	dotenv.config({
+		path: '.env.local',
+		override: true,
+		quiet: true, // Disable logs/tips
+	});
 }
 
 const envSchema = z.object({
-  NODE_ENV: z
-    .enum(['development', 'production', 'test'], {
-      error: 'Must be set to development, production, or test',
-    })
-    .default('production'),
-  PORT: z
-    .string()
-    .regex(/^\d+$/, 'Not a valid number')
-    .default('7212')
-    .transform(Number),
-  API_KEY: z.string(
-    'Must include an api key for authenticating external service calls (Will be replaced in v2 with dedicated key management service)'
-  ),
-  MAILTRAP_API_KEY: z.string('Must include api key for mailtrap'),
-  // DATABASE_URL: z.url('Must be a valid url for the database'),
+	NODE_ENV: z
+		.enum(['development', 'production', 'test'], {
+			error: 'Must be set to development, production, or test',
+		})
+		.default('production'),
+	PORT: z
+		.string()
+		.regex(/^\d+$/, 'Not a valid number')
+		.default('7414')
+		.transform(Number),
+	API_KEY: z.string(
+		'Must include an api key for authenticating external service calls (Will be replaced in v2 with dedicated key management service)'
+	),
+	MAILTRAP_API_KEY: z.string('Must include api key for mailtrap'),
+	// DATABASE_URL: z.url('Must be a valid url for the database'),
 });
 type EnvVariables = z.infer<typeof envSchema>;
 
 let env: EnvVariables;
 try {
-  env = envSchema.parse(process.env);
+	env = envSchema.parse(process.env);
 } catch (error) {
-  if (error instanceof z.ZodError) {
-    const errorTree = z.treeifyError<EnvVariables>(
-      error as z.ZodError<EnvVariables>
-    ).properties;
+	if (error instanceof z.ZodError) {
+		const errorTree = z.treeifyError<EnvVariables>(
+			error as z.ZodError<EnvVariables>
+		).properties;
 
-    console.error(
-      '❌ Invalid environment variables:',
-      errorTree &&
-        Object.entries(errorTree).map(
-          ([key, value]) => `${key}: ${value.errors.join(', ')}`
-        )
-    );
-    process.exit(1);
-  }
-  throw error;
+		console.error(
+			'❌ Invalid environment variables:',
+			errorTree &&
+				Object.entries(errorTree).map(
+					([key, value]) => `${key}: ${value.errors.join(', ')}`
+				)
+		);
+		process.exit(1);
+	}
+	throw error;
 }
 
 export { env as default, type EnvVariables };
