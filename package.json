@@ -15,19 +15,20 @@
   "license": "ISC",
   "packageManager": "pnpm@10.23.0",
   "dependencies": {
+    "@taylabs/keys-express": "github:TayLabs/Keys_Express",
     "body-parser": "^2.2.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "helmet": "^8.1.0",
-    "mailtrap": "^4.3.2",
-    "winston": "^3.18.3",
-    "zod": "^4.1.13"
+    "mailtrap": "^4.4.0",
+    "winston": "^3.19.0",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.5",
+    "@types/express": "^5.0.6",
     "cross-env": "^10.1.0",
     "tsc-alias": "^1.8.16",
     "tsx": "^4.21.0",
