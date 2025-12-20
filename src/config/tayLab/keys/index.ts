@@ -1,7 +1,8 @@
+import env from '@/types/env';
 import { config } from '@taylabs/keys-express';
 
 const { authenticateKey } = config({
-	baseUrl: 'http://localhost:7212',
+	baseUrl: env.KEY_SERVICE_BASE_URL,
 	serviceName: 'mail',
 });
 

@@ -22,6 +22,9 @@ const envSchema = z.object({
 		.regex(/^\d+$/, 'Not a valid number')
 		.default('7414')
 		.transform(Number),
+	KEY_SERVICE_BASE_URL: z.url(
+		'Must be a valid url (i.e. http://localhost:7212)'
+	),
 	MAILTRAP_API_KEY: z.string('Must include api key for mailtrap'),
 	// DATABASE_URL: z.url('Must be a valid url for the database'),
 });
