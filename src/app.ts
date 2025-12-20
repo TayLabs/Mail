@@ -5,16 +5,15 @@ import { notFoundHandler } from './middleware/notFound.middleware';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mailRoutes from './routes/mail.routes';
-import { authenticate } from './middleware/authenticate.middleware';
 
 const app = express();
 
 // CORS
 app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
+	cors({
+		origin: true,
+		credentials: true,
+	})
 );
 
 // Parse application/x-www-form-urlencoded and application/json requests
@@ -26,7 +25,7 @@ app.use(helmet());
 app.disable('x-powered-by'); // Disable the 'X-Powered-By' header for security (normally includes framework being used)
 
 // Register routes (anything exported from /*/routes/*.router.ts)
-app.use('/api/v1', authenticate, mailRoutes);
+app.use('/api/v1', mailRoutes);
 
 // Handle 404 - Not Found
 app.use(notFoundHandler);
