@@ -28,6 +28,6 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }} # Only push on actual merges/pushes
-          tags: ${{ secrets.DOCKER_USERNAME }}/taylabs-auth:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/taylabs-mail:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
