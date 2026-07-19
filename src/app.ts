@@ -8,6 +8,8 @@ import mailRoutes from './routes/mail.routes';
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 // CORS
 app.use(
 	cors({
